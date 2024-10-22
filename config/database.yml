@@ -8,4 +8,4 @@ default: &default
 
 development:
   <<: *default
-  database: app_database
+  database: task_database

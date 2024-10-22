@@ -23,6 +23,6 @@ COPY . .
 
 RUN chmod +x ./bin/*
 
-EXPOSE 3002
+EXPOSE 3001
 
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
