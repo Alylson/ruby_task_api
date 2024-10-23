@@ -25,4 +25,4 @@ RUN chmod +x ./bin/*
 
 EXPOSE 3001
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bash", "-c", "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"]
