@@ -74,11 +74,5 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  config.hosts << "notification_service:3000"
-  config.hosts << "notification_service:3003"
-  config.hosts << "task_service:3000"
-  config.hosts << "task_service:3000/tasks"
-  config.hosts << "task_service:3001"
-  config.hosts << "scraping_service:3000"
-  config.hosts << "scraping_service:3002"
+  config.hosts.clear
 end
