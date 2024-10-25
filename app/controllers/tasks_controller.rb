@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_tasks_params, only: %i[show update destroy]
+  include Authenticable
+
+  before_action :authenticate_request!
 
   def index
     @tasks = Task.all
@@ -8,9 +11,10 @@ class TasksController < ApplicationController
   end
 
   def create
+    #@tasks = Task.new(task_params.merge(user_id: @current_user_id))
     @tasks = Task.new(tasks_params)
     if @tasks.save
-      ActiveSupport::Notifications.instrument('task.created', task: @tasks)
+      ActiveSupport::Notifications.instrument('task.created', task: @tasks, user_id: @current_user_id)
       render json: { message: 'Task Created Successfully', tasks: @tasks }, status: :created
     else
       render json: { errors: @tasks.errors.full_messages }, status: :unprocessable_entity
