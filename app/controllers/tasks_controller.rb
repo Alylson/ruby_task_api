@@ -11,7 +11,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    #@tasks = Task.new(task_params.merge(user_id: @current_user_id))
     @tasks = Task.new(tasks_params)
     if @tasks.save
       ActiveSupport::Notifications.instrument('task.created', task: @tasks, user_id: @current_user_id)
